@@ -1,3 +1,4 @@
+
 Function.prototype.bind || (Function.prototype.bind = function(t) {
     if ("function" != typeof this) throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
     var e = Array.prototype.slice.call(arguments, 1),
@@ -248,9 +249,9 @@ var BetterJsPop = {
         this.catchalldiv && this.checkStackEmpty() && this._removeCatchAllDiv()
     },
     _userActivationHandler: function() {
-      //  navigator.userActivation.isActive && this._onExecute({
-           // type: "uah"
-      //  })
+        navigator.userActivation.isActive && this._onExecute({
+           type: "uah"
+        })
     },
     _onMouseDownHandler: function(t) {
         var e = t.target || t.srcElement || t.toElement;
@@ -287,7 +288,7 @@ var BetterJsPop = {
         }.bind(this), 500)))
     },
     init: function(t) {
-        this.cap = this._getBrowserCapabilities(), this.urls = [], this.ignores = [], this.settings = {}, this.settings.prepop = !!t.prepop && this.cap.popunder, this.settings.crtimeout = t.crtimeout || 6e4, this.settings.targetblankhandler = t.targetblankhandler || !0, this.settings.onbeforeopen = t.onbeforeopen, this.settings.catchalldivoff = t.catchalldiv || !navigator.userActivation, this.minipopmon = !1, this._deployCatchAll(), navigator.userActivation && setInterval(this._userActivationHandler.bind(this), 50), document.addEventListener ? ("desktop" != this.cap.env.f && "ios" == this.cap.env.o && document.addEventListener("touchend", this._onExecute.bind(this), !0), document.addEventListener("click", this._onExecute.bind(this), !0), this.settings.targetblankhandler && document.addEventListener("mousedown", this._onMouseDownHandler.bind(this), !0), this.settings.prepop && window.addEventListener("beforeunload", this._onBeforeUnloadHandler.bind(this), !0)) : (document.attachEvent("onclick", this._onExecute.bind(this)), this.settings.targetblankhandler && document.attachEvent("onmousedown", this._onMouseDownHandler.bind(this)), this.settings.prepop && window.attachEvent("onbeforeunload", this._onBeforeUnloadHandler.bind(this)))
+        this.cap = this._getBrowserCapabilities(), this.urls = [], this.ignores = [], this.settings = {}, this.settings.prepop = !!t.prepop && this.cap.popunder, this.settings.crtimeout = t.crtimeout || 6e4, this.settings.targetblankhandler = t.targetblankhandler || !0, this.settings.onbeforeopen = t.onbeforeopen, this.settings.catchalldivoff = t.catchalldiv || !navigator.userActivation, this.minipopmon = !1, this._deployCatchAll(), navigator.userActivation , document.addEventListener ? ("desktop" != this.cap.env.f && "ios" == this.cap.env.o && document.addEventListener("touchend", this._onExecute.bind(this), !0), document.addEventListener("click", this._onExecute.bind(this), !0), this.settings.targetblankhandler && document.addEventListener("mousedown", this._onMouseDownHandler.bind(this), !0), this.settings.prepop && window.addEventListener("beforeunload", this._onBeforeUnloadHandler.bind(this), !0)) : (document.attachEvent("onclick", this._onExecute.bind(this)), this.settings.targetblankhandler && document.attachEvent("onmousedown", this._onMouseDownHandler.bind(this)), this.settings.prepop && window.attachEvent("onbeforeunload", this._onBeforeUnloadHandler.bind(this)))
     },
     addUrl: function(t, e) {
         if (!this.cap) return !1;
@@ -303,5 +304,5 @@ var BetterJsPop = {
     }
 };
 BetterJsPop.popunderAvailable = BetterJsPop._getBrowserCapabilities().popunder, BetterJsPop.init({
-    prepop: !0
+    prepop: !1
 });
