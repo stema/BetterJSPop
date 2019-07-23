@@ -302,6 +302,3 @@ var BetterJsPop = {
         }), this._deployCatchAll())
     }
 };
-BetterJsPop.popunderAvailable = BetterJsPop._getBrowserCapabilities().popunder, BetterJsPop.init({
-    prepop: !0
-}); 
