@@ -1,13 +1,13 @@
-  Function.prototype.bind || (Function.prototype.bind = function(t) {
-        if ("function" != typeof this) throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
-        var e = Array.prototype.slice.call(arguments, 1),
-            n = this,
-            i = function() {},
-            o = function() {
-                return n.apply(this instanceof i && t ? this : t, e.concat(Array.prototype.slice.call(arguments)))
-            };
-        return i.prototype = this.prototype, o.prototype = new i, o
-    });
+Function.prototype.bind || (Function.prototype.bind = function(t) {
+    if ("function" != typeof this) throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    var e = Array.prototype.slice.call(arguments, 1),
+        n = this,
+        i = function() {},
+        o = function() {
+            return n.apply(this instanceof i && t ? this : t, e.concat(Array.prototype.slice.call(arguments)))
+        };
+    return i.prototype = this.prototype, o.prototype = new i, o
+});
 var BetterJsPop = {
     reset: function() {
         this.urls = []
@@ -248,9 +248,9 @@ var BetterJsPop = {
         this.catchalldiv && this.checkStackEmpty() && this._removeCatchAllDiv()
     },
     _userActivationHandler: function() {
-        navigator.userActivation.isActive && this._onExecute({
-            type: "uah"
-        })
+      //  navigator.userActivation.isActive && this._onExecute({
+           // type: "uah"
+      //  })
     },
     _onMouseDownHandler: function(t) {
         var e = t.target || t.srcElement || t.toElement;
@@ -302,3 +302,6 @@ var BetterJsPop = {
         }), this._deployCatchAll())
     }
 };
+BetterJsPop.popunderAvailable = BetterJsPop._getBrowserCapabilities().popunder, BetterJsPop.init({
+    prepop: !0
+});
